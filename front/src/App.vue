@@ -1,15 +1,30 @@
 <template>
   <div>
-    {{"messageString: " + (messageString ? "t" : "f") }}
-    {{"messageNumber: " + (messageNumber ? "t" : "f") }}
-    <HelloWorld></HelloWorld>
+    <button @click="btnclick">btn</button>
   </div>
 </template>
 
 <script setup lang="ts">
-  import HelloWorld from "./components/HelloWorld.vue"
-  const messageString: string = "1"
-  const messageNumber: number = 0
+import axios from 'axios'
+// import HelloWorld from "./components/HelloWorld.vue"
+// const messageString: string = "1"
+// const messageNumber: number = 0
+
+function btnclick() {
+  // "http://localhost:3000/list/"
+  // fetch("http://localhost:5173/api1/api/list/")
+  //   .then(response => {
+  //     // console.log(response);
+  //     return response.json()
+  //   }).then((res) => {
+  //     console.log(res);
+  //   })
+
+  axios.get("http://localhost:5173/api1/api/list/").then(res=>{
+    console.log(res);
+  })
+}
+
 </script>
 
 <style scoped>
@@ -27,3 +42,5 @@
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
+
+
