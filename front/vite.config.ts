@@ -3,5 +3,15 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()]
+  plugins: [vue()],
+  server: {
+    port: 5173,
+    proxy: {
+      '/api1': {
+        target: 'http://localhost:3000/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api1/, '') // 不可以省略rewrite
+      }
+    }
+  }
 })
