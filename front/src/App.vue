@@ -1,45 +1,42 @@
 <template>
-  <div>
-    <button @click="btnclick">btn</button>
+  <div class="box">
+    <div class="box-left"></div>
+    <div class="box-center"></div>
+    <div class="box-right"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
-// import HelloWorld from "./components/HelloWorld.vue"
-// const messageString: string = "1"
-// const messageNumber: number = 0
-
-function btnclick() {
-  // "http://localhost:3000/list/"
-  // fetch("http://localhost:5173/api1/api/list/")
-  //   .then(response => {
-  //     // console.log(response);
-  //     return response.json()
-  //   }).then((res) => {
-  //     console.log(res);
-  //   })
-
-  axios.get("http://localhost:5173/api1/api/list/").then(res=>{
-    console.log(res);
-  })
-}
-
+import {getlist} from "./network/index"
+console.log(getlist().then(res=>{
+  console.log(res);
+  
+}))
 </script>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+<style lang="less">
+* {
+  margin: 0;
+  padding: 0;
 }
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+html,body,#app{
+  height: 100%;
 }
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.box{
+  height: 100%;
+  display: flex;
+  &-left{
+    height: 100vh;
+    width: 400px;
+    background-color: aqua;
+  }
+  &-center{
+    flex: 1;
+  }
+  &-right{
+    width: 400px;
+    background-color: red;
+  }
 }
 </style>
 
