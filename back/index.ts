@@ -1,8 +1,5 @@
 import express, { Express, Router, Request, Response } from 'express'
 import axios from "axios"
-import circularJson from 'circular-json'
-console.log(circularJson);
-
 import { save } from './database'
 
 const app: Express = express()
@@ -14,12 +11,10 @@ app.use("/api", router)
 
 router.get('/list', async function (req: Request, res: Response) {
   //前端封装了ajax，后端封装了http
-  let result = null
   await axios.post("https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=diseaseh5Shelf,statisGradeCityDetail")
     .then(v => {
       res.json(v.data)
     })
-  
 })
 
 

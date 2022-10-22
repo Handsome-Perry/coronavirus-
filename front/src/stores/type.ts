@@ -187,3 +187,8 @@ export interface RootObject {
 	info: string;
 	data: Data;
 }
+
+export interface OptionData {
+  name: string;
+  value: number[];
+}
