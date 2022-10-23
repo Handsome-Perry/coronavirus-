@@ -123,8 +123,7 @@ const option = {
 async function initMap() {
   // 请求数据获取list
   const store = useConterStore()
-  await store.getList();
-  store.item = store.list.data.diseaseh5Shelf.areaTree[0].children[5].children
+  
   // 基于准备好的dom，初始化echarts实例
   let map = echarts.init(document.getElementById('main') as HTMLElement);
   map!.setOption(option);
