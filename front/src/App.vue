@@ -31,17 +31,17 @@ html,
 body,
 #app {
   height: 100%;
+  overflow: hidden;
 }
 
 .box {
   height: 100%;
   display: flex;
-
+  background: url("@/assets/bg.jpg");
+  background-size: cover;
   &-left {
-    // height: 100vh;
-    flex-shrink: 0;
     width: 350px;
-    background-color: aqua;
+    flex: 0 0 400px;
   }
 
   &-center {
@@ -49,8 +49,7 @@ body,
   }
 
   &-right {
-    width: 350px;
-    background-color: red;
+    flex: 0 0 400px;
   }
 }
 </style>

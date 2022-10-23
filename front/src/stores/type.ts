@@ -143,6 +143,7 @@ export interface Children {
 	children: Children[];
 	name: string;
 	adcode: string;
+	id: number
 }
 
 export interface AreaTree {

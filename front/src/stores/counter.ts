@@ -5,7 +5,7 @@ export const useConterStore = defineStore("store", {
   state: () => {
     return {
       list: <RootObject>{},
-      items: <Children[]>[]
+      item: <Children[]>[]
     }
   },
   actions: {

@@ -1,21 +1,35 @@
 <template>
-  <table class="right-info">
-    <tr>
-      <th v-for="item in head">{{item}}</th>
-    </tr>
-    <tr v-for="item in store.items">
-      <td>{{item.name}}</td>
-      <td>{{item.today.confirm}}</td>
-      <td>{{item.total.confirm}}</td>
-      <td>{{item.total.heal}}</td>
-      <td>{{item.total.dead}}</td>
-    </tr>
-  </table>
+        <transition name="table">
+          <table v-show="table_flag" class="table">
+            <thead>
+              <tr>
+                <th>地区</th>
+                <th>新增确诊</th>
+                <th>累计确诊</th>
+                <th>治愈</th>
+                <th>死亡</th>
+              </tr>
+            </thead>
+            <transition-group name="table-tbody">
+              <tr :key="item.id" v-for="(item) in store.item">
+                <td>{{ item.name }}</td>
+                <td>{{ item.today.confirm }}</td>
+                <td>{{ item.total.confirm }}</td>
+                <td>{{ item.total.heal }}</td>
+                <td>{{ item.total.dead }}</td>
+              </tr>
+            </transition-group>
+          </table>
+        </transition>
 </template>
 
 <script setup lang="ts">
-import { useConterStore } from '@/stores/counter'
 
+import {ref} from "vue"
+import { useConterStore } from '@/stores/counter'
+import "animate.css"
+
+const table_flag = ref(true)
 let store = useConterStore()
 let head = ["地区", "新增确诊", "累计确诊", "治愈", "死亡"]
 
@@ -23,21 +37,40 @@ let head = ["地区", "新增确诊", "累计确诊", "治愈", "死亡"]
 </script>
 
 <style scoped lang="less">
-.right-info {
-  // width: 350px;
-  display: flex;
-  flex-direction: column;
-
-}
-
-.right-info tr {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-
-td,th {
-  border: 1px solid black;
-  width: 20%;
+@itemColor: #41b0db;
+@itemBg: #223651;
+@itemBorder: #212028;
+.table {
+  width: 100%;
+  background: @itemBg;
+  color: white;
+  border: 0 solid @itemBorder;
+  border-top: none;
+  border-spacing: 0;
+  &-enter-active {
+    animation: fadeIn 0.25s;
+  }
+  &-leave-active {
+    animation: fadeOut 0.25s;
+  }
+  tr {
+    th {
+      padding: 5px;
+      white-space: nowrap;
+      border: 1px solid @itemBorder;
+    }
+    td {
+      padding: 5px 10px;
+      width: 100px;
+      white-space: nowrap;
+      text-align: center;
+      border: 1px solid @itemBorder;
+    }
+  }
+  &-tbody {
+    &-enter-active {
+      animation: flipInY 0.5s;
+    }
+  }
 }
 </style>
