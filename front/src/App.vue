@@ -25,6 +25,7 @@ import { useConterStore } from '@/stores/counter'
 
 import { initMap } from '@/echars/initMap'
 import { initPie } from "@/echars/initPie"
+import {initLine} from "@/echars/initLine"
 
 let store = useConterStore()
 
@@ -32,6 +33,7 @@ onMounted(async () => {
   await store.getList();
   initMap()
   initPie()
+  initLine()
 })
 
 </script>

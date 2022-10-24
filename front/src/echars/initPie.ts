@@ -4,11 +4,10 @@ import { useConterStore } from '@/stores/counter'
 export async function initPie() {
   let store = useConterStore()
 
+  // 初始化饼图
   let pie = echarts.init(document.getElementById('box-left-line1') as HTMLElement);
-  console.log(pie);
 
-  console.log(store.cityDetail);
-
+  
   pie!.setOption({
     series: [
       {
